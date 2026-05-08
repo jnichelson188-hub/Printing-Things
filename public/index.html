@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Printing Things - 3D Prints, Models & Electronics</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">🖨️ Printing Things</div>
+      <ul class="nav-links">
+        <li><a onclick="showPage('home')">Home</a></li>
+        <li><a onclick="showPage('shop')">Shop</a></li>
+        <li><a onclick="showPage('cart')">Cart <span id="cart-count">0</span></a></li>
+        <li><a onclick="showPage('account')">Account</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="main-content container">
+    
+    <!-- Home Page -->
+    <div id="home" class="page active">
+      <div class="hero">
+        <h1>Welcome to Printing Things</h1>
+        <p>Quality 3D Prints, Models & Electronics for Makers</p>
+        <button class="btn btn-primary" onclick="showPage('shop')">Start Shopping</button>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <div style="font-size: 3rem;">🖨️</div>
+          <h3>3D Prints</h3>
+          <p>Ready-to-use printed models and functional parts</p>
+        </div>
+        <div class="feature">
+          <div style="font-size: 3rem;">📦</div>
+          <h3>3D Models</h3>
+          <p>Download STL files for your own printing</p>
+        </div>
+        <div class="feature">
+          <div style="font-size: 3rem;">⚙️</div>
+          <h3>Electronics</h3>
+          <p>Arduino kits, LEDs, and maker components</p>
+        </div>
+        <div class="feature">
+          <div style="font-size: 3rem;">🚀</div>
+          <h3>Fast Shipping</h3>
+          <p>Quick delivery to your doorstep</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shop Page -->
+    <div id="shop" class="page">
+      <h2>Shop</h2>
+      
+      <div class="filters">
+        <button class="filter-btn active" onclick="filterProducts('all')">All Products</button>
+        <button class="filter-btn" onclick="filterProducts('prints')">3D Prints</button>
+        <button class="filter-btn" onclick="filterProducts('models')">3D Models</button>
+        <button class="filter-btn" onclick="filterProducts('electronics')">Electronics</button>
+      </div>
+
+      <div id="products" class="products-grid">
+        <!-- Products will be loaded here -->
+      </div>
+    </div>
+
+    <!-- Cart Page -->
+    <div id="cart" class="page">
+      <h2>Shopping Cart</h2>
+      
+      <div id="cart-items" class="cart-items">
+        <!-- Cart items will be displayed here -->
+      </div>
+
+      <div class="cart-summary">
+        <h3>Total: $<span id="cart-total">0.00</span></h3>
+        <button class="btn btn-primary" onclick="showPage('checkout')">Proceed to Checkout</button>
+      </div>
+    </div>
+
+    <!-- Account Page -->
+    <div id="account" class="page">
+      <h2>Account</h2>
+
+      <div id="login-form">
+        <h3>Login</h3>
+        <input type="email" id="login-email" placeholder="Email" required>
+        <input type="password" id="login-password" placeholder="Password" required>
+        <button class="btn btn-primary" onclick="login()">Login</button>
+        <p>Don't have an account? <a onclick="toggleSignup()" style="cursor: pointer; color: #667eea;">Sign up</a></p>
+      </div>
+
+      <div id="signup-form" style="display: none;">
+        <h3>Create Account</h3>
+        <input type="text" id="signup-username" placeholder="Username" required>
+        <input type="email" id="signup-email" placeholder="Email" required>
+        <input type="password" id="signup-password" placeholder="Password" required>
+        <button class="btn btn-primary" onclick="signup()">Sign Up</button>
+        <p>Already have an account? <a onclick="toggleSignup()" style="cursor: pointer; color: #667eea;">Login</a></p>
+      </div>
+
+      <div id="user-dashboard" style="display: none;">
+        <h3>Welcome Back!</h3>
+        <p>Your account is active</p>
+        <button class="btn" onclick="logout()">Logout</button>
+      </div>
+    </div>
+
+    <!-- Checkout Page -->
+    <div id="checkout" class="page">
+      <h2>Checkout</h2>
+      
+      <form>
+        <h3>Shipping Information</h3>
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email" required>
+        <input type="text" placeholder="Address" required>
+        <input type="text" placeholder="City" required>
+        <input type="text" placeholder="State" required>
+        <input type="text" placeholder="ZIP Code" required>
+
+        <h3>Payment Method</h3>
+        <label>
+          <input type="radio" name="payment" value="paypal" checked> PayPal
+        </label>
+        <label>
+          <input type="radio" name="payment" value="stripe"> Credit Card (Stripe)
+        </label>
+        <label>
+          <input type="radio" name="payment" value="card"> Direct Card Payment
+        </label>
+
+        <h3>Order Total: $<span id="checkout-total">0.00</span></h3>
+        
+        <button type="button" class="btn btn-primary" onclick="processPayment()">Complete Payment</button>
+        <button type="button" class="btn" onclick="showPage('cart')">Back to Cart</button>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Printing Things. All rights reserved.</p>
+    <p>Contact: support@printingthings.com</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
