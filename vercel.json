@@ -1,0 +1,6 @@
+{
+  "buildCommand": "npm install",
+  "devCommand": "npm start",
+  "outputDirectory": "public",
+  "envPrefix": "VITE_"
+}
